@@ -86,8 +86,16 @@ console.log(objeto2,"objeto2")
 //a função recebe um array como parametro 
 //criar uma função que retorne esse array invertido
 
-
-
+function inverter(lista=[]){
+    let aux = []
+    for(let i = lista.length-1; i >=0;i-- ){
+        aux.push(lista[i])
+    }
+    return aux
+}
+ 
+const result = inverter([1,45,90,678,"judas","amanhã"])
+console.log(result,"result")
 
 
 
