@@ -88,8 +88,11 @@ button{
 }
 .modal_header{
     padding: 16px;
-    background-color: #265299;
+    background-color: #0b7e1c;
     position: relative;
+}
+.modal_header_error{
+    background-color: #ca272f;
 }
 .modal_header button{
     position: absolute;

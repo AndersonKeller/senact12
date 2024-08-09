@@ -1,5 +1,4 @@
 function login(){
-    const mensagem = "usuário ou senha inválidos, por favor, verifique seus dados!"
     const form = document.querySelector("form")
     const button = document.querySelector("button")
     const email = document.querySelector("#email")
@@ -14,34 +13,57 @@ function login(){
         console.log(event,"event")
         if(password.value != "1234" ){
             console.log("Senha errada")
-            console.log(window)
-            const body = document.querySelector("body")
-            body.insertAdjacentHTML("afterend",
-                `
-                 <div class="modal_wrapper">
-        <div class="modal">
-            <div class="modal_header">
-                <h2>Atenção</h2>
-                <button id="close">X</button>
-            </div>
-            <div class="modal_body">
-                <p>${mensagem}</p>
-                <button>Ok</button>
-            </div>
-            </div>
-        </div>
-                `
-            )
-            const btnClose = document.querySelector("#close")
-            btnClose.addEventListener("click",()=>{
-                const modal = document.querySelector(".modal_wrapper")
-                modal.remove()
-            })
+            
+            openModal("usuário ou senha inválidos","Erro!","erro")
         }else{
-            console.log("senha correta")
-            window.location.href = "./home"
+            openModal("sucesso, seja bem vindo!","Sucesso!","success")
         }
     })
 
 }
 login()
+function openModal(mensagem, titulo, tipo){
+    const body = document.querySelector("body")
+            body.insertAdjacentHTML("afterend",
+                `
+                 <div class="modal_wrapper">
+        <div class="modal">
+            <div class="modal_header ${tipo == 'erro'?'modal_header_error':'' }">
+                <h2>${titulo}</h2>
+                <button id="close">X</button>
+            </div>
+            <div class="modal_body">
+                <p>${mensagem}</p>
+                <button id="btnOk">Ok</button>
+            </div>
+            </div>
+        </div>
+                `
+            )
+            
+            if(tipo==="success"){
+                const btnOk = document.querySelector("#btnOk")
+                btnOk.addEventListener("click",()=>{
+                    window.location.href = "/home"
+                })
+                const btnClose = document.querySelector("#close")
+                btnClose.addEventListener("click",()=>{
+                    const modal = document.querySelector(".modal_wrapper")
+                    modal.remove()
+                    window.location.href = "/home"
+            })
+            }else{
+                const modal = document.querySelector(".modal_wrapper")
+                const btnOk = document.querySelector("#btnOk")
+                btnOk.addEventListener("click",()=>{
+                    modal.remove()
+                })
+                const btnClose = document.querySelector("#close")
+                btnClose.addEventListener("click",()=>{
+                    
+                modal.remove()}
+            )
+            }
+}
+
+// console.log("1" == 1,"1 == 1")
