@@ -25,20 +25,23 @@ function listarItems(){
 function montarCarrinho(){
     const ulCarrinho = document.querySelector(".carrinho")
     ulCarrinho.innerHTML=""
-    carrinho.forEach((item)=>{
+    carrinho.forEach((item,index)=>{
         ulCarrinho.insertAdjacentHTML("beforeend",`<li>
             <p>${item.nome}</p>
-            <button id="${item.id}remove">X</button>
+            <button id="${item.id}${index}remove">X</button>
         </li> `)
-        const btnRemove = document.getElementById(`${item.id}remove`)
-        btnRemove.addEventListener("click",()=>{
+        const btnRemove = document.getElementById(`${item.id}${index}remove`)
+        btnRemove.addEventListener("click",(e)=>{
+            
             removerDoCarrinho(item.id)
         })
     })
 }
 function removerDoCarrinho(id){
-    console.log(id)
-    const filtro = carrinho.filter((car)=>car.id !=id)
-    carrinho = filtro
+  
+    const filtro = carrinho.findIndex((car)=>car.id == id)
+    carrinho.splice(filtro,1)
+    console.log(filtro,"index")
+    console.log(id,"id")
     montarCarrinho()
 }
