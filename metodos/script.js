@@ -74,3 +74,10 @@ if(index !== -1){
 }
 console.log(index,"index")
 console.log(lista3,"original")
+
+const btn = document.querySelector("button")
+btn.addEventListener("click",()=>{
+    console.log("click")
+    const div = document.querySelector(".animacao")
+    div.classList.add("spinner")
+})

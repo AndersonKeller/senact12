@@ -1,0 +1,19 @@
+.animacao{
+    background-color: red;
+    height: 100px;
+    width: 200px;
+    opacity: 0;
+}
+.spinner {
+    animation: spinner 4s ease;
+    opacity: 1;
+}
+
+@keyframes spinner {
+   0%{
+    opacity: 0;
+    
+   }100%{
+    opacity: 1;
+   }
+}
