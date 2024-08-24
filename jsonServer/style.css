@@ -1,0 +1,10 @@
+ul{
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    /* background-color: #179f10; */
+}
+li{
+    width: 200px;
+    height: 200px;
+}
